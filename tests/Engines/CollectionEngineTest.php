@@ -195,6 +195,23 @@ class CollectionEngineTest extends TestCase {
         );
         $this->assertEquals($should, $engine->getArray());
     }
+    
+    public function testShowAll()
+    {
+        Input::replace(
+            array(
+                'iDisplayLength' => -1
+            )
+        );
+
+        $engine = new CollectionEngine(new Collection($this->getTestArray()));
+        $engine->addColumn($this->getTestColumns());
+        $engine->setAliasMapping();
+        $engine->make();
+
+        $should = $this->getTestArray();
+        $this->assertEquals($should, $engine->getArray());
+    }
 
     public function testComplex()
     {

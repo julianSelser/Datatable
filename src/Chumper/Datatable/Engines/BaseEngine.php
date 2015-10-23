@@ -367,7 +367,18 @@ abstract class BaseEngine {
     {
         //limit nicht am query, sondern den ganzen
         //holen und dann dynamisch in der Collection taken und skippen
-        $this->take($value);
+        //$this->take($value);
+        if(is_numeric($value)){
+            if($value > -1){
+                $this->take($value);
+                return;
+            }else if($value == -1){
+                // Display All.
+                return;
+            }
+        }
+        // iDisplayLength invalid!
+        $this->take(isset($this->config['defaultDisplayLength'])? $this->config['defaultDisplayLength'] : 10);
     }
 
     /**
