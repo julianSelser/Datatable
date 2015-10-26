@@ -421,6 +421,12 @@ class Table {
         $this->className = $class;
         return $this;
     }
+    
+    public function addClass($class)
+    {
+        $this->className = $this->className . ' ' . $class;
+        return $this;
+    }
 
     public function setAliasMapping($value)
     {
