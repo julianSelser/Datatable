@@ -4,3 +4,4 @@ composer.lock
 datatable.sublime-project
 .DS_Store
 .idea
+/nbproject/private/
