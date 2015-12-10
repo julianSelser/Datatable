@@ -20,6 +20,8 @@ abstract class BaseEngine {
     const ORDER_ASC = 'asc';
     const ORDER_DESC = 'desc';
 
+    private $extraData = [];
+    
     /**
      * @var array
      */
@@ -131,6 +133,14 @@ abstract class BaseEngine {
         $this->setExactWordSearch( $this->config['exactWordSearch'] );
         return $this;
     }
+    
+    /**
+     * @return $this
+     */
+    public function addData($key,$val){
+        $this->extraData[$key] = $val;
+        return $this;
+    }
 
     /**
      * @return $this
@@ -237,6 +247,7 @@ abstract class BaseEngine {
 
         $output = array(
             "aaData" => $this->internalMake($this->columns, $this->searchColumns)->toArray(),
+            "eData" => $this->extraData,
             "sEcho" => intval($this->sEcho),
             "iTotalRecords" => $this->totalCount(),
             "iTotalDisplayRecords" => $this->count(),
