@@ -20,6 +20,8 @@
     </tr>
     @endforeach
     </tbody>
+    
+    <tfoot></tfoot>
 </table>
 
 @if (!$noScript)
